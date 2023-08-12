@@ -1,4 +1,4 @@
-package com.sms.sitemanagemet.model;
+package com.sms.sitemanagement.model;
 
 import jakarta.persistence.*;
 import lombok.*;
