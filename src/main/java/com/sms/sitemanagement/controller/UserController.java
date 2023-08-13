@@ -67,4 +67,21 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/{apartmentCode}")
+    public ResponseEntity<List<User>> getApartmentUsers(@PathVariable Character apartmentCode) {
+        List<User> userList = userService.getApartmentUsers(apartmentCode);
+        return new ResponseEntity<>(userList, HttpStatus.OK);
+    }
+
+    @GetMapping("/filtered")
+    public ResponseEntity<List<User>> getFilteredUsers(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String lastname,
+            @RequestParam(required = false) Character apartmentCode,
+            @RequestParam(required = false) Integer doorNumber) {
+        List<User> filteredUsers = userService.getFilteredUsers(name, lastname, apartmentCode, doorNumber);
+        return new ResponseEntity<>(filteredUsers, HttpStatus.OK);
+    }
+
 }

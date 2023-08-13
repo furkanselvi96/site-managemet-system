@@ -28,7 +28,7 @@ public class User {
     private Character apartmentCode;
 
     @Column(name = "door_number", nullable = false)
-    private String doorNumber;
+    private Integer doorNumber;
 
     @Column(name = "phone_number")
     private String phoneNumber;

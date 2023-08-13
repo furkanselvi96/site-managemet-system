@@ -3,6 +3,8 @@ package com.sms.sitemanagement.service;
 import com.sms.sitemanagement.dto.UserRequest;
 import com.sms.sitemanagement.model.User;
 import com.sms.sitemanagement.repository.UserJpaRepository;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -65,4 +67,24 @@ public class UserService {
         }
         return false;
     }
+
+    public List<User> getApartmentUsers(Character apartmentCode) {
+        return userJpaRepository.findByApartmentCode(apartmentCode);
+    }
+
+    public List<User> getFilteredUsers(String name, String lastname, Character apartmentCode, Integer doorNumber) {
+        User user = new User();
+        user.setName(name);
+        user.setLastname(lastname);
+        user.setApartmentCode(apartmentCode);
+        user.setDoorNumber(doorNumber);
+
+        ExampleMatcher userMatcher = ExampleMatcher.matchingAll()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+                .withIgnoreCase();
+
+        Example<User> example = Example.of(user, userMatcher);
+        return userJpaRepository.findAll(example);
+    }
+
 }

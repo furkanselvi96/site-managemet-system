@@ -8,7 +8,7 @@ public class UserRequest {
     private String name;
     private String lastname;
     private Character apartmentCode;
-    private String doorNumber;
+    private Integer doorNumber;
     private String phoneNumber;
 
 }
