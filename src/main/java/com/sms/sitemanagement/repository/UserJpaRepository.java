@@ -20,4 +20,6 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     List<User> findByNameAndLastnameAndApartmentCodeAndDoorNumber(String name, String lastname, Character apartmentCode, Integer doorNumber);
 
     List<User> findByNameAndLastnameAndApartmentCode(String name, String lastname, Character apartmentCode);
+
+    boolean existsByUsername(String username);
 }

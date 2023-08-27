@@ -7,8 +7,9 @@ import org.hibernate.Hibernate;
 import java.util.Objects;
 
 @Entity
-@Data
-@Table(name = "users")
+@Getter
+@Setter
+@Table(name = "user_ınfo")
 @ToString
 @RequiredArgsConstructor
 public class User {
@@ -17,6 +18,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_ıd", nullable = false)
     private Long userId;
+
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
 
     @Column(name = "name", nullable = false)
     private String name;

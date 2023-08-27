@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class UserRequest {
 
+    private String username;
     private String name;
     private String lastname;
     private Character apartmentCode;
